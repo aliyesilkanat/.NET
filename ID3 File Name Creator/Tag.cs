@@ -65,7 +65,6 @@ namespace ID3Namerv1
             Artist = null;
             Title = null;
             Codec = null;
-          
         }
         public void setTag(string a, string t, string d)
         {
@@ -74,7 +73,6 @@ namespace ID3Namerv1
             FInfo = new FileInfo(d);
             Codec = FInfo.Extension;
             initializeName();
-           
         }
         private string defaultNewName()
         {
@@ -95,15 +93,20 @@ namespace ID3Namerv1
         }
         public void renameID3(string artist,string title)
         {           
-            TagLib.File f = TagLib.File.Create(FInfo.FullName);
-
             this.Artist = artist;
             this.Title = title;
-            f.Tag.Artists[0] = Artist;
+            //f.Tag.Artists[0] = Artist;
+            this.initializeName();
+            using (TagLib.File f = TagLib.File.Create(FInfo.FullName))
+            {
 
-            initializeName();
-            f.Tag.Title = title;
-            f.Save();
+                f.Tag.Performers = null;
+                f.Tag.Performers = new []{artist};
+                f.Tag.Title = title;
+                f.Save();
+            }
+
+           
         }
 
     }

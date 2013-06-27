@@ -34,6 +34,7 @@ namespace ID3Namerv1
                 }
                 invalidFileNameCheck();
             }
+            
         }
 
         private void invalidFileNameCheck()

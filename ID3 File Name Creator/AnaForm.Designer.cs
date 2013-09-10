@@ -1,6 +1,6 @@
 ﻿namespace ID3Namerv1
 {
-    partial class Form1
+    partial class AnaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,13 @@
             this.grpID3 = new System.Windows.Forms.GroupBox();
             this.btnDegistir = new System.Windows.Forms.Button();
             this.Wrapper = new System.Windows.Forms.GroupBox();
+            this.grpTasi = new System.Windows.Forms.GroupBox();
+            this.splitTasiDegistir = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDegistirVeTasi = new System.Windows.Forms.Button();
+            this.btnKlasorSec = new System.Windows.Forms.Button();
+            this.txtMuzikKlasoru = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lnkSelectNone = new System.Windows.Forms.LinkLabel();
             this.lnkSelectAll = new System.Windows.Forms.LinkLabel();
@@ -50,6 +57,13 @@
             this.grpSec.SuspendLayout();
             this.grpID3.SuspendLayout();
             this.Wrapper.SuspendLayout();
+            this.grpTasi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitTasiDegistir)).BeginInit();
+            this.splitTasiDegistir.Panel1.SuspendLayout();
+            this.splitTasiDegistir.Panel2.SuspendLayout();
+            this.splitTasiDegistir.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStripListRow.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +94,7 @@
             this.lvTag.LabelWrap = false;
             this.lvTag.Location = new System.Drawing.Point(3, 16);
             this.lvTag.Name = "lvTag";
-            this.lvTag.Size = new System.Drawing.Size(862, 192);
+            this.lvTag.Size = new System.Drawing.Size(862, 240);
             this.lvTag.TabIndex = 2;
             this.lvTag.UseCompatibleStateImageBehavior = false;
             this.lvTag.View = System.Windows.Forms.View.Details;
@@ -116,7 +130,7 @@
             this.grpSec.Size = new System.Drawing.Size(877, 50);
             this.grpSec.TabIndex = 1;
             this.grpSec.TabStop = false;
-            this.grpSec.Text = "Dosya/Klasör Seç";
+            this.grpSec.Text = "Adları Değişecek Parçaların Bulunduğu Dosyayı/Klasörü Seç";
             // 
             // btnFolder
             // 
@@ -143,7 +157,7 @@
             this.grpID3.Controls.Add(this.lvTag);
             this.grpID3.Location = new System.Drawing.Point(3, 26);
             this.grpID3.Name = "grpID3";
-            this.grpID3.Size = new System.Drawing.Size(868, 211);
+            this.grpID3.Size = new System.Drawing.Size(868, 259);
             this.grpID3.TabIndex = 4;
             this.grpID3.TabStop = false;
             this.grpID3.Text = "ID3";
@@ -151,9 +165,9 @@
             // btnDegistir
             // 
             this.btnDegistir.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnDegistir.Location = new System.Drawing.Point(3, 434);
+            this.btnDegistir.Location = new System.Drawing.Point(3, 45);
             this.btnDegistir.Name = "btnDegistir";
-            this.btnDegistir.Size = new System.Drawing.Size(889, 23);
+            this.btnDegistir.Size = new System.Drawing.Size(414, 23);
             this.btnDegistir.TabIndex = 5;
             this.btnDegistir.Text = "Değiştir";
             this.btnDegistir.UseVisualStyleBackColor = true;
@@ -161,15 +175,97 @@
             // 
             // Wrapper
             // 
+            this.Wrapper.Controls.Add(this.grpTasi);
             this.Wrapper.Controls.Add(this.panel1);
             this.Wrapper.Controls.Add(this.grpSec);
-            this.Wrapper.Controls.Add(this.btnDegistir);
             this.Wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Wrapper.Location = new System.Drawing.Point(0, 0);
             this.Wrapper.Name = "Wrapper";
-            this.Wrapper.Size = new System.Drawing.Size(895, 460);
+            this.Wrapper.Size = new System.Drawing.Size(895, 468);
             this.Wrapper.TabIndex = 6;
             this.Wrapper.TabStop = false;
+            // 
+            // grpTasi
+            // 
+            this.grpTasi.Controls.Add(this.splitTasiDegistir);
+            this.grpTasi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grpTasi.Location = new System.Drawing.Point(3, 365);
+            this.grpTasi.Name = "grpTasi";
+            this.grpTasi.Size = new System.Drawing.Size(889, 100);
+            this.grpTasi.TabIndex = 7;
+            this.grpTasi.TabStop = false;
+            this.grpTasi.Text = "Değiştir";
+            // 
+            // splitTasiDegistir
+            // 
+            this.splitTasiDegistir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitTasiDegistir.Location = new System.Drawing.Point(3, 16);
+            this.splitTasiDegistir.Name = "splitTasiDegistir";
+            // 
+            // splitTasiDegistir.Panel1
+            // 
+            this.splitTasiDegistir.Panel1.Controls.Add(this.groupBox2);
+            this.splitTasiDegistir.Panel1.Padding = new System.Windows.Forms.Padding(5);
+            // 
+            // splitTasiDegistir.Panel2
+            // 
+            this.splitTasiDegistir.Panel2.Controls.Add(this.groupBox1);
+            this.splitTasiDegistir.Panel2.Padding = new System.Windows.Forms.Padding(5);
+            this.splitTasiDegistir.Size = new System.Drawing.Size(883, 81);
+            this.splitTasiDegistir.SplitterDistance = 449;
+            this.splitTasiDegistir.TabIndex = 6;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnDegistirVeTasi);
+            this.groupBox2.Controls.Add(this.btnKlasorSec);
+            this.groupBox2.Controls.Add(this.txtMuzikKlasoru);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(5, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(439, 71);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adı Değiştir ve Seçilen Klasöre Taşı";
+            // 
+            // btnDegistirVeTasi
+            // 
+            this.btnDegistirVeTasi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDegistirVeTasi.Location = new System.Drawing.Point(3, 45);
+            this.btnDegistirVeTasi.Name = "btnDegistirVeTasi";
+            this.btnDegistirVeTasi.Size = new System.Drawing.Size(433, 23);
+            this.btnDegistirVeTasi.TabIndex = 2;
+            this.btnDegistirVeTasi.Text = "Değiştir ve Klasöre Taşı";
+            this.btnDegistirVeTasi.UseVisualStyleBackColor = true;
+            this.btnDegistirVeTasi.Click += new System.EventHandler(this.btnDegistirVeTasi_Click);
+            // 
+            // btnKlasorSec
+            // 
+            this.btnKlasorSec.Location = new System.Drawing.Point(3, 19);
+            this.btnKlasorSec.Name = "btnKlasorSec";
+            this.btnKlasorSec.Size = new System.Drawing.Size(125, 23);
+            this.btnKlasorSec.TabIndex = 0;
+            this.btnKlasorSec.Text = "Taşınacak Klasörü Seç";
+            this.btnKlasorSec.UseVisualStyleBackColor = true;
+            this.btnKlasorSec.Click += new System.EventHandler(this.btnKlasorSec_Click);
+            // 
+            // txtMuzikKlasoru
+            // 
+            this.txtMuzikKlasoru.Location = new System.Drawing.Point(137, 21);
+            this.txtMuzikKlasoru.Name = "txtMuzikKlasoru";
+            this.txtMuzikKlasoru.Size = new System.Drawing.Size(299, 20);
+            this.txtMuzikKlasoru.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnDegistir);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(5, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(420, 71);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Adı Değiştir";
             // 
             // panel1
             // 
@@ -211,36 +307,44 @@
             this.silToolStripMenuItem,
             this.duzenleToolStripMenuItem});
             this.menuStripListRow.Name = "menuStripListRow";
-            this.menuStripListRow.Size = new System.Drawing.Size(153, 70);
+            this.menuStripListRow.Size = new System.Drawing.Size(117, 48);
             // 
             // silToolStripMenuItem
             // 
             this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.silToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.silToolStripMenuItem.Text = "Kaldır";
             this.silToolStripMenuItem.Click += new System.EventHandler(this.kaldirToolStripMenuItem_Click);
             // 
             // duzenleToolStripMenuItem
             // 
             this.duzenleToolStripMenuItem.Name = "duzenleToolStripMenuItem";
-            this.duzenleToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.duzenleToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.duzenleToolStripMenuItem.Text = "Düzenle";
             this.duzenleToolStripMenuItem.Click += new System.EventHandler(this.yeniDosyaAdınıDüzenleToolStripMenuItem_Click);
             // 
-            // Form1
+            // AnaForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 460);
+            this.ClientSize = new System.Drawing.Size(895, 468);
             this.Controls.Add(this.Wrapper);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "AnaForm";
             this.Text = "ID3 Tag";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grpSec.ResumeLayout(false);
             this.grpID3.ResumeLayout(false);
             this.Wrapper.ResumeLayout(false);
+            this.grpTasi.ResumeLayout(false);
+            this.splitTasiDegistir.Panel1.ResumeLayout(false);
+            this.splitTasiDegistir.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitTasiDegistir)).EndInit();
+            this.splitTasiDegistir.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStripListRow.ResumeLayout(false);
@@ -268,6 +372,13 @@
         private System.Windows.Forms.Button btnFolder;
         private System.Windows.Forms.ColumnHeader clmnNewFileName;
         private System.Windows.Forms.ToolStripMenuItem duzenleToolStripMenuItem;
+        private System.Windows.Forms.GroupBox grpTasi;
+        private System.Windows.Forms.TextBox txtMuzikKlasoru;
+        private System.Windows.Forms.Button btnKlasorSec;
+        private System.Windows.Forms.Button btnDegistirVeTasi;
+        private System.Windows.Forms.SplitContainer splitTasiDegistir;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
 
     }
 }

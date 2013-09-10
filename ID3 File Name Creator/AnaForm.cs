@@ -11,14 +11,31 @@ using TagLib;
 
 namespace ID3Namerv1
 {
-    public partial class Form1 : Form
+    public partial class AnaForm : Form
     {
      List<Tag> tagList = new List<Tag>();
-       
-        public Form1()
+
+     string configPath;
+     string configFile;
+
+        public AnaForm()
         {
        
             InitializeComponent();
+            btnDegistirVeTasi.Enabled = false;
+            configPath =Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"ID3 File Name Editor");
+            configFile = configPath + @"\musicFilePath.ini";
+            if (!System.IO.File.Exists(configFile))
+            {
+                Directory.CreateDirectory(configPath);
+            }
+            else
+            {
+                StreamReader sr = new StreamReader(configFile);
+                txtMuzikKlasoru.Text = sr.ReadLine();
+                btnDegistirVeTasi.Enabled = true;
+                sr.Dispose();
+            }
         }      
         private void btnSec_Click(object sender, EventArgs e)
         { 
@@ -138,6 +155,7 @@ namespace ID3Namerv1
                     dosyalariYukle(fn);
                 }
                 invalidFileNameCheck();
+                
             }
         }
 
@@ -198,6 +216,54 @@ namespace ID3Namerv1
                     tagList[item.Index].initializeName();
                     item.SubItems[1].Text = tagList[item.Index].NewName;
                 }
-        }      
+        }
+
+        private void btnKlasorSec_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txtMuzikKlasoru.Text = fbd.SelectedPath;
+                StreamWriter sw = new StreamWriter(System.IO.File.Create(configFile));
+                sw.Write(txtMuzikKlasoru.Text);
+                sw.Dispose();
+                btnDegistirVeTasi.Enabled = true;
+            }
+        }
+
+        private void btnDegistirVeTasi_Click(object sender, EventArgs e)
+        {
+            int index = 0;
+            try
+            {
+                bool degistirildi = false;
+                foreach (Tag t in tagList)
+                    if (lvTag.Items[index++].Checked == true)
+                    {
+                        t.renameFileName();
+                        System.IO.File.Move(t.FInfo.DirectoryName +"\\"+ t.NewName, txtMuzikKlasoru.Text+"\\"+t.NewName);
+                        //t.FInfo.MoveTo(txtMuzikKlasoru.Text);
+                        degistirildi = true;
+
+                    }
+                if (degistirildi == true)
+                    MessageBox.Show("Listedeki dosyaların isimleri değiştirildi,"+txtMuzikKlasoru.Text+" klasörüne taşındı.");
+                else MessageBox.Show("Seçili dosya yok.");
+                lvTag.Items.Clear();
+                tagList.Clear();
+            }
+            catch (NotSupportedException)
+            {
+                MessageBox.Show(@"Dosya adı /\><" + '"' + " : * ? | içeremez." + '\n' + tagList[index - 1].NewName);
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+          
+        
+        }
+     
     }
 }
